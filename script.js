@@ -39,6 +39,11 @@ let bottomPipeImg;
 
 // physics
 let velocityX = -2; // pipes moving left speed
+
+if (isMobileDevice()) {
+  velocityX = -5;
+}
+
 let velocityY = 0; // bird jump speed
 let gravity = 0.4;
 
@@ -73,7 +78,7 @@ window.onload = function() {
   // setInterval(placePipes, 1500); // every 1.5 seconds
   
   if (isMobileDevice()) {
-    setInterval(placePipes, 1000); // every 1 second
+    setInterval(placePipes, 3000); // every 1 second
   } else {
     setInterval(placePipes, 1500); // every 1.5 seconds
   }
@@ -170,6 +175,10 @@ function moveBird(e) {
   if (e.code === "Space" || e.type === "touchstart") {
     // jump
     velocityY = -6;
+
+    if (isMobileDevice()) {
+      velocityY = -9;
+    }
 
     // reset game
     if (gameOver) {
