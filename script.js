@@ -128,7 +128,17 @@ function update() {
   // score
   context.fillStyle = "white";
   context.font = "30px 'Press Start 2P', cursive";
-  context.fillText(score, 170, 150);
+  // context.fillText(score, 170, 150);
+
+  if (score > 9) {
+    let scoreOffset = Math.floor(Math.log10(Math.abs(score)));
+    console.log("test: ", scoreOffset);
+    let scorePosition = 170 + (-20  * (scoreOffset));
+    context.fillText(score, scorePosition, 150);
+  } else {
+    context.fillText(score, 170, 150);
+  }
+  
   if (gameOver) {
     if (score > highscore) {
       highscore = score;
@@ -136,7 +146,15 @@ function update() {
     // context.fillText("GAME OVER", 5, 90);
     context.fillText("SCORE", 110, 110);
     context.fillText("BEST", 125, 190);
-    context.fillText(highscore, 170, 230);
+    // context.fillText(highscore, 170, 230);
+
+    if (highscore > 9) {
+      let highscoreOffset = Math.floor(Math.log10(Math.abs(highscore)));
+      let highscorePosition = 170 + (-20  * (highscoreOffset));
+      context.fillText(highscore, highscorePosition, 230);
+    } else {
+      context.fillText(highscore, 170, 230);
+    }
   }
 }
 
@@ -174,7 +192,7 @@ function placePipes() {
 function moveBird(e) {
   if (e.code === "Space" || e.type === "touchstart") {
     // jump
-    velocityY = -6;
+    velocityY = -7;
 
     if (isMobileDevice()) {
       velocityY = -10;
