@@ -39,13 +39,13 @@ let bottomPipeImg;
 
 // physics
 let velocityX = -2; // pipes moving left speed
+let velocityY = 0; // bird jump speed
+let gravity = 0.4;
 
 if (isMobileDevice()) {
   velocityX = -5;
+  gravity = 0.7;
 }
-
-let velocityY = 0; // bird jump speed
-let gravity = 0.4;
 
 let gameOver = false;
 let score = 0;
@@ -177,7 +177,7 @@ function moveBird(e) {
     velocityY = -6;
 
     if (isMobileDevice()) {
-      velocityY = -9;
+      velocityY = -3;
     }
 
     // reset game
