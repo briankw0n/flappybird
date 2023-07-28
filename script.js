@@ -1,9 +1,17 @@
+function isMobileDevice() {
+  return /Mobi|Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+}
 
 // board
 let board;
 let boardWidth = 360;
 let boardHeight = 640;
 let context;
+
+if (isMobileDevice()) {
+  boardWidth = window.innerWidth;
+  boardHeight = window.innerHeight;
+}
 
 // bird
 let birdWidth = 34; // width/height ratio = 408/228 = 17/12
@@ -13,10 +21,10 @@ let birdY = boardHeight / 2;
 let birdImg;
 
 let bird = {
-  x : birdX,
-  y : birdY,
-  width : birdWidth,
-  height : birdHeight
+  x: birdX,
+  y: birdY,
+  width: birdWidth,
+  height: birdHeight
 }
 
 // pipes
@@ -62,7 +70,14 @@ window.onload = function() {
   bottomPipeImg.src = "bottompipe.png";
 
   requestAnimationFrame(update);
-  setInterval(placePipes, 1500); // every 1.5 seconds
+  // setInterval(placePipes, 1500); // every 1.5 seconds
+  
+  if (isMobileDevice()) {
+    setInterval(placePipes, 1000); // every 1 second
+  } else {
+    setInterval(placePipes, 1500); // every 1.5 seconds
+  }
+
   document.addEventListener("keydown", moveBird);
   document.addEventListener("touchstart", moveBird);
 }
@@ -131,22 +146,22 @@ function placePipes() {
   let openingSpace = board.height / 4;
 
   let topPipe = {
-    img : topPipeImg,
-    x : pipeX,
-    y : randomPipeY,
-    width : pipeWidth,
-    height : pipeHeight,
-    passed : false
+    img: topPipeImg,
+    x: pipeX,
+    y: randomPipeY,
+    width: pipeWidth,
+    height: pipeHeight,
+    passed: false
   }
   pipeArray.push(topPipe);
 
   let bottomPipe = {
-    img : bottomPipeImg,
-    x : pipeX,
-    y : randomPipeY + pipeHeight + openingSpace,
-    width : pipeWidth,
-    height : pipeHeight,
-    passed : false
+    img: bottomPipeImg,
+    x: pipeX,
+    y: randomPipeY + pipeHeight + openingSpace,
+    width: pipeWidth,
+    height: pipeHeight,
+    passed: false
   }
   pipeArray.push(bottomPipe);
 }
