@@ -177,7 +177,7 @@ function moveBird(e) {
     velocityY = -6;
 
     if (isMobileDevice()) {
-      velocityY = -6;
+      velocityY = -8;
     }
 
     // reset game
