@@ -43,7 +43,7 @@ let velocityY = 0; // bird jump speed
 let gravity = 0.4;
 
 if (isMobileDevice()) {
-  velocityX = -15;
+  velocityX = -7;
   gravity = 1.0;
 }
 
