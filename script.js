@@ -36,6 +36,7 @@ let gravity = 0.4;
 
 let gameOver = false;
 let score = 0;
+var highscore = 0;
 
 window.onload = function() {
   board = document.getElementById("board");
@@ -106,10 +107,15 @@ function update() {
   // score
   context.fillStyle = "white";
   context.font = "30px 'Press Start 2P', cursive";
-  context.fillText(score, 5, 45);
-
+  context.fillText(score, 170, 150);
   if (gameOver) {
-    context.fillText("GAME OVER", 5, 90);
+    if (score > highscore) {
+      highscore = score;
+    }
+    // context.fillText("GAME OVER", 5, 90);
+    context.fillText("SCORE", 110, 110);
+    context.fillText("BEST", 125, 190);
+    context.fillText(highscore, 170, 230);
   }
 }
 
