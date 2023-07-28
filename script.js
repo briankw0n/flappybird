@@ -105,7 +105,7 @@ function update() {
 
   // score
   context.fillStyle = "white";
-  context.font = "45px sans-seriff";
+  context.font = "30px 'Press Start 2P', cursive";
   context.fillText(score, 5, 45);
 
   if (gameOver) {
