@@ -78,7 +78,7 @@ window.onload = function() {
   // setInterval(placePipes, 1500); // every 1.5 seconds
   
   if (isMobileDevice()) {
-    setInterval(placePipes, 3000); // every 1 second
+    setInterval(placePipes, 2000); // every 1 second
   } else {
     setInterval(placePipes, 1500); // every 1.5 seconds
   }

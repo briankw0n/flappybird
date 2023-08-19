@@ -9,6 +9,7 @@ body {
   /* font-family: 'Press Start 2P', cursive; */
   text-align: center;
   overflow: hidden;
+  margin: 0;
 }
 
 #board {
